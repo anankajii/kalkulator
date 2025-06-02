@@ -1,5 +1,6 @@
 /* Background gradient animation */
 body {
+    position: relative; /* Penting untuk z-index anak-anak */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -19,6 +20,7 @@ body {
 
 /* Kalkulator dengan efek glow */
 .calculator {
+    position: relative;
     background-color: rgb(6, 180, 255);
     padding: 20px;
     border-radius: 10px;
@@ -27,6 +29,7 @@ body {
         0 0 20px #00f6ff,
         0 0 30px #00f6ff;
     transition: transform 0.3s ease;
+    z-index: 10; /* Lebih rendah dari gambar */
 }
 .calculator:hover {
     transform: scale(1.02);
@@ -57,24 +60,25 @@ button {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    transition: background-color 0.2s;
 }
 button:active {
     background-color: #fcfafa;
 }
 
+/* Gambar love */
 .love-image {
     position: absolute;
     width: 60px;
     height: auto;
     transform: translate(-50%, -50%) scale(1);
     transition: left 2s ease-in-out, top 2s ease-in-out, transform 1s ease;
-    z-index: 9999; /* SUPER tinggi agar selalu di atas */
-    pointer-events: none; /* agar tidak mengganggu klik tombol kalkulator */
+    z-index: 9999; /* Pastikan selalu di atas kalkulator */
+    pointer-events: none; /* Supaya tidak ganggu klik */
+    opacity: 1;
 }
 
-
-
-
+/* Efek animasi mengambang jika ingin digunakan */
 @keyframes floatUp {
     0% {
         transform: translateY(0) scale(0.5);
